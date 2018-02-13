@@ -1,0 +1,95 @@
+\documentclass[utf8,12pt]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}	
+\usepackage[english,russian]{babel}
+\usepackage{amssymb,amsfonts,amsmath,mathtext,cite,enumerate,float}
+\usepackage{graphicx}
+\graphicspath{{images/}{images/results/}}
+\usepackage{floatrow}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+%\usepackage{hyperref} % for using howpublished = in bibliography
+%\usepackage{url} % for using \url{}
+
+
+\usepackage{longtable}
+
+\usepackage{chemfig,chemmacros}
+%\chemsetup[chemformula]{format=\sffamily}
+\renewcommand*\printatom[1]{\ensuremath{\mathsf{#1}}}
+\setatomsep{2em}
+\setdoublesep{.6ex}
+\setbondstyle{semithick}
+\bibliographystyle{unsrt}
+
+%decimal point
+\usepackage{siunitx}%S[table-format=3.2]
+
+%PGFplots
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing,shadows} 
+\usepackage{verbatim}
+\usepackage{filecontents}
+\pgfplotsset{compat = 1.3}
+\usepackage{subcaption}
+\usepgfplotslibrary{polar}
+\usepgfplotslibrary{dateplot}
+\usepackage{modiagram}
+
+%patch
+\usepgfplotslibrary{patchplots}
+\pgfplotsset{compat=newest}
+
+%tabular alignment
+\usepackage{siunitx}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.} % Заменяем библиографию с квадратных скобок на точку:
+\makeatother
+
+\usepackage{geometry} % Меняем поля страницы
+\geometry{left=2cm}% левое поле
+\geometry{right=1.5cm}% правое поле
+\geometry{top=1.5cm}% верхнее поле
+\geometry{bottom=1.5cm}% нижнее поле
+%интервал
+\usepackage{setspace}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\renewcommand{\baselinestretch}{1.25}
+
+\renewcommand{\theenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumii}{.\arabic{enumii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumiii}{.\arabic{enumiii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}% Меняем везде перечисления на цифра.цифра
+
+%for matrix
+\usepackage{tabstackengine}
+\setstacktabbedgap{1.5ex}%               sets gap between columns
+\setstackgap{L}{1.2\normalbaselineskip}% sets baselineskip of rows
+\def\stackalignment{c}%                  sets column alignment
+% abs
+\delimitershortfall-1sp
+\newcommand\abs[1]{\left|#1\right|}
+
+\author{I. Avdonin}
+\date{April 2017}
+
+\begin{document}
+
+\input{data.tex}
+\input{raman_results.tex}
+
+\end{document}
+

@@ -1,0 +1,148 @@
+\subsection*{Определение константы диссоциации азотной кислоты методом КР}
+
+\vspace{.5em}
+\begin{center}
+    Иван С. Авдонин
+\end{center}
+
+\thispagestyle{empty}
+
+\noindent\textbf{Цель работы: } Интерпретация спектров КР раствора азотной кислоты и расчёт константы диссоциации.
+
+\begin{figure}[h]
+\centering
+    \begin{tikzpicture}
+    \begin{axis}[%
+    width = \linewidth,
+    height = 0.5\linewidth,
+    axis x line*=bottom,
+    axis y line*=left,
+    %axis line style = {line width=0.1pt},
+    %xticklabels = \empty,
+    %yticklabels = \empty,
+    %xtick = \empty,
+    ymax = 2,
+    ytick = \empty,
+    xlabel shift = 0 pt,
+    ylabel shift = 0 pt,
+    ylabel = {Relative Raman Intensity}, % Set the labels
+    xlabel = {cm$^{-1}$},
+    %ylabel style = {rotate=-90,at={(axis description cs:0,.9)}},
+    %xlabel style = {at={(axis description cs:1.1,0)}}
+    ]
+    \addplot [
+    %only marks,
+    patch type=quadratic spline,
+    %mark size=.5,
+    blue,mark=none,pattern=horizontal line light blue, domain=500:1300, samples=1000] table {C0.1norm.dat};
+    
+    \addplot [
+    %only marks,
+    patch type=quadratic spline,
+    %mark size=.5,
+    red,mark=none,pattern=horizontal line light red, domain=500:1300, samples=1000] table {C14norm.dat};
+ 
+    \node[
+        coordinate,
+        pin = {[rotate=90]right:$\delta_{rock}(O-N-O)$}
+        ] at (axis cs:638,0.6) { };
+
+    \node[
+        coordinate,
+        pin = {[rotate=90]right:$\delta_{sciss}(O-N-O)$}
+        ] at (axis cs:688,0.6) { };
+        
+    \node[
+        coordinate,
+        pin = {[rotate=90]right:$\nu(HO-NO_2)$}
+        ] at (axis cs:954,0.8) { };
+        
+    \node[
+        coordinate,
+        pin = {4:$\nu(NO_3^-)$}
+        ] at (axis cs:1048,1.35) { };
+        
+    \node[
+        coordinate,
+        pin = {[rotate=90]right:$\nu(O-N-O)$}
+        ] at (axis cs:1305,.9) { };
+        
+                
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Спектры КР водных растворов 0.1 M (синий) и 14 М (красный) азотной кислоты. 
+    \\$\nu$ -- валентные колебания, $\delta$ -- деформационные.}
+    \label{fig:cf3cocccl+cpd.IRC}
+\end{figure}
+
+\begin{figure}[h!]
+\begin{minipage}[h]{.45\linewidth}
+\centering
+    \begin{tikzpicture}
+    \begin{axis}[%
+    width = 0.9\linewidth,
+    %height = 0.7\linewidth,
+    axis x line*=bottom,
+    axis y line*=left,
+    %axis line style = {line width=0.1pt},
+    %xticklabels = \empty,
+    %yticklabels = \empty,
+    %xtick = \empty,
+    %ytick = \empty,
+    xlabel shift = 0 pt,
+    ylabel shift = 0 pt,
+    ylabel = {Peak height}, % Set the labels
+    xlabel = {C, mol/L},
+    %ylabel style = {rotate=-90,at={(axis description cs:0,.9)}},
+    %xlabel style = {at={(axis description cs:1.1,0)}}
+    ]
+    \addplot[
+    only marks,
+    %mark size=.5,
+    %draw=blue,pattern=horizontal lines light blue] table [mark=*,x index=0,y index=1]{f.dat};
+    draw=blue,pattern=horizontal lines light blue] table [mark=*,x index=0,y index=1]{c.dat};
+    \addplot[draw=red,pattern=horizontal lines light blue,domain=0:.85, samples=100]{7942.37*x};
+    
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Калибровочный график высоты пика от концентрации кислоты.}
+    \label{fig:cf3cocccl+cpd.IRC}
+\end{minipage}
+\hspace{10pt}
+\begin{minipage}[h]{.45\linewidth}
+\centering
+    \begin{tikzpicture}
+    \begin{axis}[%
+    width = 0.9\linewidth,
+    %height = 0.7\linewidth,
+    axis x line*=bottom,
+    axis y line*=left,
+    %axis line style = {line width=0.1pt},
+    %xticklabels = \empty,
+    %yticklabels = \empty,
+    %xtick = \empty,
+    %ytick = \empty,
+    xlabel shift = 0 pt,
+    ylabel shift = 0 pt,
+    ylabel = {$lgK_C$}, % Set the labels
+    xlabel = {C, mol/L},
+    %ylabel style = {rotate=-90,at={(axis description cs:0,.9)}},
+    %xlabel style = {at={(axis description cs:1.1,0)}}
+    ]
+    \addplot[
+    only marks,
+    %mark size=.5,
+    %draw=blue,pattern=horizontal lines light blue] table [mark=*,x index=0,y index=1]{f.dat};
+    draw=blue,pattern=horizontal lines light blue] table [mark=*,x index=0,y index=1]{ClgK.dat};
+    \addplot[draw=red,pattern=horizontal lines light blue,domain=0:13, samples=100]{-0.1446*x+1.4768};
+    
+    \end{axis}
+    \end{tikzpicture}
+    \caption{$lgK_C = -0.145C+1.477$ \\$R^2 = 0.998$}
+    \label{fig:cf3cocccl+cpd.IRC}
+    \end{minipage}
+\end{figure}
+
+\begin{equation*}
+    K_a = \lim_{C_{HNO_3} \to 0} lgK_C \approx 10^{1.477} \approx 30
+\end{equation*}
